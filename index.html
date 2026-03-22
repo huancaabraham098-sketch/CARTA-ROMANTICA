@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>❤️PARA TI MI VIDA HERMOSA❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to top, #340241, #cd47ae);
+    text-align: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+.contenedor {
+    padding: 50px;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+p {
+    font-size: 1.3em;
+    max-width: 700px;
+    margin: auto;
+}
+
+img {
+    width: 500px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+/* BOTONES */
+button {
+    margin-top: 30px;
+    padding: 15px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff4b5c;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff1e3c;
+}
+
+/* CARTA */
+.carta {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 20px;
+    width: 300px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: 0.5s;
+    z-index: 10;
+}
+
+.carta.activa {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* GIRASOLES */
+.flor {
+    position: fixed;
+    top: -120px;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<audio id="musica" loop>
+    <source src="Simplemente Gracias - Calibre 50 (Cover de LUCAH).mp4" type="audio/mpeg">
+</audio>
+
+<div class="contenedor">
+    <h1>❤️Para Mi Amor❤️</h1>
+
+    <p>
+        Hoy pensé en regalarte una flor amarilla,
+        no por costumbre ni por moda,
+        sino porque en su color vive
+        todo lo bonito que tu alma provoca 💖
+        <br><br>
+        Porque así como esa flor brilla,
+        cuando el sol la sabe tocar,
+        así iluminas mis días
+        con solo tu forma de mirar 🌻
+        <br><br>
+        Te quiero mucho 💖
+    </p>
+
+    <img src="GISELA.jpeg" alt="Nuestra foto">
+
+    <br>
+
+    <button onclick="mostrarMensaje()">Haz clic aquí 💌</button>
+    <p id="mensaje"></p>
+
+    <!-- BOTÓN NUEVO WOW -->
+    <button onclick="abrirCarta()">❤️Abrir carta❤️</button>
+</div>
+
+<!-- CARTA SECRETA -->
+<div class="carta" id="carta">
+    <h2>❤️Para ti❤️</h2>
+    <p>
+        Tu le diste sentido a mi vida 🌻  
+        contigo todo es mas bonito 💖 
+        me encantas tu ❤️
+        me encantan tus besos😘
+        me encanctan tus abrazos🥺
+        solamente me encantas tu❤️🥺😘
+        MI VIDA HERMOSA❤️
+    </p>
+    <button onclick="cerrarCarta()">Cerrar</button>
+</div>
+
+<script>
+// MENSAJES
+function mostrarMensaje() {
+    const mensajes = [
+        "Eres mi todo 💖",
+        "Contigo quiero todo 🥺",
+        "Gracias por existir ❤️",
+        "Eres mi felicidad 😘",
+        "Eres la mujer de mi vida 😘❤️",
+    ];
+
+    let random = Math.floor(Math.random() * mensajes.length);
+    document.getElementById("mensaje").innerText = mensajes[random];
+}
+
+// CARTA
+function abrirCarta() {
+    document.getElementById("carta").classList.add("activa");
+
+    const audio = document.getElementById("musica");
+    audio.play();
+}
+function cerrarCarta() {
+    document.getElementById("carta").classList.remove("activa");
+
+    const audio = document.getElementById("musica");
+    audio.pause();
+}
+// GIRASOLES
+function crearFlor() {
+    const flor = document.createElement("div");
+    flor.classList.add("flor");
+
+    const elementos = ["🌻", "❤️", "✨"];
+    flor.innerText = elementos[Math.floor(Math.random() * elementos.length)];
+
+    flor.style.left = Math.random() * 100 + "vw";
+    flor.style.fontSize = (Math.random() * 80+ 80) + "px";
+    flor.style.animationDuration = (Math.random() * 5 + 4) + "s";
+
+    document.body.appendChild(flor);
+
+    setTimeout(() => {
+        flor.remove();
+    }, 9000);
+}
+
+setInterval(crearFlor, 500);
+</script>
+
+</body>
+</html>
