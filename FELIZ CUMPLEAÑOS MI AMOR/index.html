@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FELIZ CUMPLEAÑOS MI AMOR!!! ✨ ❤️ GISELA ❤️ </title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ══ CANVAS DE ESTRELLAS ══ -->
+  <canvas id="stars"></canvas>
+
+  <!-- ══ PARTÍCULAS FLOTANTES ══ -->
+  <div id="particles"></div>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 1 · HERO / PORTADA
+  ══════════════════════════════════════════ -->
+  <section class="hero" id="inicio">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <p class="hero-pre">PARA LA MUJER DE MI VIDA</p>
+      <h1 class="hero-name">
+        <!-- ✏️ CAMBIA ESTE NOMBRE -->
+       ❤️ GISELA ❤️
+      </h1>
+      <div class="hero-divider">
+        <span class="star-icon">✦</span>
+      </div>
+      <p class="hero-sub">
+        <!-- ✏️ CAMBIA ESTE MENSAJE CORTO -->
+        Hoy el universo entero celebra que existes
+      </p>
+      <button class="btn-magic" onclick="abrirSorpresa()">
+        <span class="btn-glow"></span>
+        ✨ Abrir tu regalo mágico
+      </button>
+    </div>
+    <div class="scroll-hint">
+      <span>SIGUE DESLIZANDO MI VIDA HERMOSA</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 2 · CUENTA REGRESIVA
+  ══════════════════════════════════════════ -->
+  <section class="section countdown-section" id="cuenta">
+    <div class="section-inner">
+      <p class="section-pre">✦ el tiempo</p>
+      <h2 class="section-title">Contando cada segundo</h2>
+
+      <!-- SI YA ES SU CUMPLEAÑOS muestra celebración, si no muestra cuenta regresiva -->
+      <div id="countdown-display" class="countdown-grid"></div>
+      <p class="countdown-label" id="countdown-msg">
+        <!-- ✏️ CAMBIA LA FECHA: formato "MES DIA" en inglés, ej: "January 15" -->
+        <!-- La fecha se configura en app.js → const BIRTHDAY = "January 15" -->
+        Hasta el día más especial del año
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 3 · GALERÍA DE FOTOS
+  ══════════════════════════════════════════ -->
+  <section class="section gallery-section" id="galeria">
+    <div class="section-inner">
+      <p class="section-pre">✦ nuestros momentos</p>
+      <h2 class="section-title">Instantes que guardo en el alma</h2>
+
+      <div class="gallery-grid" id="gallery">
+        <!--
+          ✏️ CÓMO AGREGAR FOTOS:
+          Opción A — URL de internet:
+            <img src="https://TU-URL-DE-FOTO.jpg" alt="Descripción">
+          Opción B — Foto local (pon las fotos en la misma carpeta):
+            <img src="foto1.jpg" alt="Descripción">
+
+          Reemplaza los bloques .photo-card de abajo con tus fotos reales.
+        -->
+
+        <div class="photo-card" data-caption="Nuestro primer momento juntos 💫">
+          <div class="photo-placeholder">
+            <span>📷</span>
+            <small>foto1.jpg</small>
+          </div>
+          <div class="photo-overlay">
+            <p>NUESTRO PRIMER MOMENTO JUNTOS 💫</p>
+          </div>
+        </div>
+
+        <div class="photo-card featured" data-caption="El día que todo cambió ✨">
+          <div class="photo-placeholder">
+            <span>📷</span>
+            <small>foto2.jpg</small>
+          </div>
+          <div class="photo-overlay">
+            <p>COMO OLVIDAR EL DIA EN EL QUE TE CONOCI ✨</p>
+          </div>
+        </div>
+
+        <div class="photo-card" data-caption="Tu sonrisa, mi universo 🌙">
+          <div class="photo-placeholder">
+            <span>📷</span>
+            <small>foto3.jpg</small>
+          </div>
+          <div class="photo-overlay">
+            <p>TU SONRISA SIMPLEMENTE ME TIENE FLECHADO 🌙</p>
+          </div>
+        </div>
+
+        <div class="photo-card" data-caption="Juntos siempre 🌟">
+          <div class="photo-placeholder">
+            <span>📷</span>
+            <small>foto4.jpg</small>
+          </div>
+          <div class="photo-overlay">
+            <p>JUNTOS SIEMPRE 🌟</p>
+          </div>
+        </div>
+
+        <div class="photo-card featured" data-caption="Mi favorita de todas ❤️">
+          <div class="photo-placeholder">
+            <span>📷</span>
+            <small>foto5.jpg</small>
+          </div>
+          <div class="photo-overlay">
+            <p>ERES LA MUJER DE MI VIDA ❤️</p>
+          </div>
+        </div>
+
+        <div class="photo-card" data-caption="Recuerdos eternos 💎">
+          <div class="photo-placeholder">
+            <span>📷</span>
+            <small>foto6.jpg</small>
+          </div>
+          <div class="photo-overlay">
+            <p>RECUERDOS VALIOSOS 💎</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lightbox para ver fotos en grande -->
+      <div class="lightbox" id="lightbox">
+        <button class="lb-close" onclick="cerrarLightbox()">✕</button>
+        <button class="lb-prev" onclick="fotoAnterior()">‹</button>
+        <div class="lb-img-wrap">
+          <img id="lb-img" src="" alt="" />
+          <p id="lb-caption"></p>
+        </div>
+        <button class="lb-next" onclick="fotoSiguiente()">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 4 · REPRODUCTOR DE CANCIONES
+  ══════════════════════════════════════════ -->
+  <section class="section music-section" id="musica">
+    <div class="section-inner">
+      <p class="section-pre">✦ nuestra música</p>
+      <h2 class="section-title">Las canciones que nos definen</h2>
+
+      <div class="music-player">
+        <div class="player-vinyl" id="vinyl">
+          <div class="vinyl-inner">
+            <span class="vinyl-note">♪</span>
+          </div>
+        </div>
+
+        <div class="player-info">
+          <div class="now-playing-label">♪ reproduciendo ahora</div>
+          <div class="song-title" id="song-title">Canción 1</div>
+          <div class="song-artist" id="song-artist">Artista 1</div>
+
+          <div class="player-controls">
+            <button class="ctrl-btn" onclick="cancionAnterior()" title="Anterior">⏮</button>
+            <button class="ctrl-btn play-btn" id="play-btn" onclick="togglePlay()">▶</button>
+            <button class="ctrl-btn" onclick="cancionSiguiente()" title="Siguiente">⏭</button>
+          </div>
+
+          <div class="song-dots" id="song-dots"></div>
+        </div>
+      </div>
+
+      <!-- Lista de canciones -->
+      <div class="playlist" id="playlist"></div>
+
+      <!--
+        ✏️ CONFIGURA LAS CANCIONES EN app.js → const CANCIONES = [...]
+        Puedes poner links de YouTube, Spotify, o simplemente el nombre
+      -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 5 · MENSAJE DE AMOR
+  ══════════════════════════════════════════ -->
+  <section class="section message-section" id="mensaje">
+    <div class="section-inner">
+      <p class="section-pre">✦ HOY EN ESTE DIA ESPECIAL NACIO EL AMOR DE MI VIDA:</p>
+      <h2 class="section-title">PARA TI</h2>
+
+      <div class="message-card">
+        <div class="message-quote">❝</div>
+        <div class="message-body">
+          <!--
+            ✏️ CAMBIA ESTE MENSAJE — puedes hacerlo tan largo como quieras.
+            Separa párrafos con <br><br>
+          -->
+          <p>
+            Hoy, el mundo celebra el dia en que nacio la mujer mas maravillosa de este 
+            mundo, la que llego a mi vida y cambio todo por completo, quiero que sepas 
+            que cada momento contigo ha sido el regalo más grande
+            que la vida me ha dado, que no puedo si no decirte lo mucho que te quiero.
+          </p>
+          <br>
+          <p>
+            Eres la persona que convierte los días grises en constelaciones,
+            la que hace que todo tenga sentido con solo una sonrisa.
+            Gracias por existir, por ser exactamente como eres,
+            por dejarme estar a tu lado.
+          </p>
+          <br>
+          <p>
+            Feliz cumpleaños, amor mío. Que este año que empieza
+            esté lleno de todo lo que mereces: magia, alegría,
+            y todo el amor que yo tengo para darte.
+          </p>
+        </div>
+        <div class="message-signature">
+          <!-- ✏️ CAMBIA TU NOMBRE -->
+          Con todo mi amor, <em></em>
+        </div>
+      </div>
+
+      <!-- Botones interactivos -->
+      <div class="interactive-buttons">
+        <button class="ibtn ibtn-stars" onclick="lloverEstrellas()">
+          🌟 Llover estrellas
+        </button>
+        <button class="ibtn ibtn-hearts" onclick="lloverCorazones()">
+          ❤️ Llover corazones
+        </button>
+        <button class="ibtn ibtn-confetti" onclick="lanzarConfetti()">
+          🎉 ¡Celebrar!
+        </button>
+        <button class="ibtn ibtn-wish" onclick="pedirDeseo()">
+          🕯️ Pedir un deseo
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 6 · RAZONES POR LAS QUE TE AMO
+  ══════════════════════════════════════════ -->
+  <section class="section reasons-section" id="razones">
+    <div class="section-inner">
+      <p class="section-pre">✦ SON INFINITAS LAS RAZONES</p>
+      <h2 class="section-title">POR QUE TE AMO</h2>
+
+      <div class="reasons-grid" id="reasons-grid">
+        <!--
+          ✏️ CAMBIA LAS RAZONES — agrega o quita las que quieras
+        -->
+        <div class="reason-card" style="--delay:0s">
+          <div class="reason-icon">🌙</div>
+          <p>Por tu forma de ver el mundo con tanta ternura</p>
+        </div>
+        <div class="reason-card" style="--delay:.1s">
+          <div class="reason-icon">✨</div>
+          <p>Por tu risa que ilumina cualquier lugar</p>
+        </div>
+        <div class="reason-card" style="--delay:.2s">
+          <div class="reason-icon">💫</div>
+          <p>Por tu inteligencia que me asombra cada día</p>
+        </div>
+        <div class="reason-card" style="--delay:.3s">
+          <div class="reason-icon">🌸</div>
+          <p>Por tu bondad que no tiene límites</p>
+        </div>
+        <div class="reason-card" style="--delay:.4s">
+          <div class="reason-icon">🦋</div>
+          <p>Por cómo me haces querer ser mejor persona</p>
+        </div>
+        <div class="reason-card" style="--delay:.5s">
+          <div class="reason-icon">🌟</div>
+          <p>Por estar en los momentos que más te necesité</p>
+        </div>
+        <div class="reason-card" style="--delay:.6s">
+          <div class="reason-icon">💎</div>
+          <p>Por tu valentía ante la vida</p>
+        </div>
+        <div class="reason-card" style="--delay:.7s">
+          <div class="reason-icon">🎵</div>
+          <p>Por compartir cada canción y cada silencio</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-stars">✦ ✧ ✦</div>
+    <p class="footer-text">
+      Hecho con todo el amor del universo para
+      <!-- ✏️ CAMBIA EL NOMBRE -->
+      <strong>❤️GISELA❤️</strong>
+    </p>
+    <p class="footer-sub">EN SU DIA MAS ESPECIAL ✨</p>
+  </footer>
+
+  <!-- ══ MODAL SORPRESA ══ -->
+  <div class="modal-overlay" id="modal-sorpresa">
+    <div class="modal-box">
+      <div class="modal-stars">✦ ✧ ✦ ✧ ✦</div>
+      <h2 class="modal-title">¡FELIZ CUMPLEAÑOS MI VIDA HERMOSA!</h2>
+      <div class="modal-name">
+        <!-- ✏️ CAMBIA EL NOMBRE -->
+        ❤️GISELA❤️ 
+      </div>
+      <p class="modal-msg">
+        No solo celebro el dia en que naciste.<br>
+        Celebro el regalo que eres para mi vida. 🌟
+      </p>
+      <button class="btn-magic" onclick="cerrarModal()">
+        <span class="btn-glow"></span>
+        💫 ¡Gracias!
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ CONTENEDOR DE EFECTOS VOLADORES ══ -->
+  <div id="fx-container"></div>
+
+  <!-- ══ DESEO MODAL ══ -->
+  <div class="modal-overlay" id="modal-deseo">
+    <div class="modal-box">
+      <div class="candle-anim">🕯️</div>
+      <h2 class="modal-title">Pide tu deseo...</h2>
+      <p class="modal-msg">Cierra los ojos, piensa en lo que más quieres<br>y cuando estés lista...</p>
+      <button class="btn-magic" onclick="soplarVela()">
+        <span class="btn-glow"></span>
+        💨 ¡Soplar!
+      </button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <audio id="audiofondo" loop>
+  <source src="" id="srcfondo" type="audio/mpeg">
+</audio>
+</body>
+</html>
